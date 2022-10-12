@@ -63,6 +63,7 @@ extension CollisionAnimator {
     }
 
     func startDeviceMotion() {
+        guard motionManager.isDeviceMotionAvailable else { return }
         motionManager.startDeviceMotionUpdates(to: .main) { [unowned self] motion, _ in
             guard let motion else { return }
             var point = CGPoint(x: CGFloat(motion.gravity.x),
